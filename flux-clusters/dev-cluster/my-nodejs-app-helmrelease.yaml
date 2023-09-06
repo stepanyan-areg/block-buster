@@ -9,11 +9,19 @@ spec:
   chart:
     spec:
       chart: helm-chart
+      reconsileStretegy: ChartVersion
       sourceRef:
         kind: GitRepository
-        name: cicd-app
-        namespace: flux-system
-        secretRef:
-          name: git-ssh-key-secret # Name of the secret you created
-      interval: 1m
-  
+        name: cicd-app  
+  values:
+     lables:
+       app:
+         env: dev
+         name: block-buster
+         version: 7.5.0
+     namespace:
+       name: 5-demo
+     replicaCount: 2
+     service:
+       nodePort: 30005
+       type: NodePort              
