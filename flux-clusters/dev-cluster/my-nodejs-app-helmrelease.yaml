@@ -1,0 +1,21 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: my-nodejs-app
+  namespace: default
+spec:
+  interval: 1m
+  chart:
+    spec:
+      chart: cicd-app/helm
+      sourceRef:
+        kind: GitRepository
+        name: cicd-app
+        namespace: flux-system
+        secretRef:
+          name: git-ssh-key-secret # Name of the secret you created
+      interval: 1m
+  values:
+    image:
+      tag: stage-9413f3d26f205eae8e152d622dce1b862f4b9f5d

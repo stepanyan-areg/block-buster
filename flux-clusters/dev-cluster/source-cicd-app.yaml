@@ -1,0 +1,10 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: cicd-app
+  namespace: flux-system
+spec:
+  interval: 1m
+  url: ssh://git@github.com/abs1994/cicd-app
+  ref:
+    branch: main
