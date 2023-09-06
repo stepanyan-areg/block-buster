@@ -1,0 +1,10 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: GitRepository
+metadata:
+  name: cicd-app
+  namespace: flux-system
+spec:
+  interval: 1m
+  url: https://github.com/abs1994/bb-app-source
+  ref:
+    branch: main

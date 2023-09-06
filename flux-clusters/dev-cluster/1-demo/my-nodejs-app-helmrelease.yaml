@@ -1,0 +1,27 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: cicd-app
+  namespace: flux-system
+spec:
+  interval: 1m
+  chart:
+    spec:
+      chart: helm-chart
+      reconsileStretegy: ChartVersion
+      sourceRef:
+        kind: GitRepository
+        name: cicd-app  
+  values:
+     lables:
+       app:
+         env: dev
+         name: block-buster
+         version: 7.5.0
+     namespace:
+       name: 5-demo
+     replicaCount: 2
+     service:
+       nodePort: 30005
+       type: NodePort              
