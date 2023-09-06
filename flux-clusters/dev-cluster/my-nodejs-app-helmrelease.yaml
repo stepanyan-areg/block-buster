@@ -12,10 +12,4 @@ spec:
       sourceRef:
         kind: GitRepository
         name: cicd-app
-        namespace: flux-system
-        secretRef:
-          name: git-ssh-key-secret # Name of the secret you created
-      interval: 1m
-  values:
-    image:
-      tag: stage-e9927fecf8881d2105d5e73d12277dd7f4b47a2d
+        
